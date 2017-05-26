@@ -1,6 +1,5 @@
 'use strict'
 $(document).ready(function() {
-	
 	loadData();
 	loadSecondCategory();
 	loadSecondAddress();
@@ -49,7 +48,8 @@ function loadData(){
             		  	"<a href=\"active/materialController/list.do?activeId="+active.id+"\" class=\"btn btn-s-md btn-danger \">素材管理</a>  "+
             		  	"<a href=\"#modal-add-update\" data-toggle=\"modal\" class=\"btn btn-s-md btn-danger \" onclick=\"updateActive("+i+")\">修改</a>  "+
             		  	"<a class=\"btn btn-s-md btn-danger \" onclick=\"delActive("+i+")\">删除</a>    "+
-            		  	"<a class=\"btn btn-s-md btn-danger \" onclick=\"goActive("+i+")\">预览</a>"+
+            		  	"<a class=\"btn btn-s-md btn-danger \" onclick=\"goActive("+i+")\">预览</a>   "+
+            		  	"<a class=\"btn btn-s-md btn-danger \" onclick=\"exportPeoples("+i+")\">报名用户导出</a>"+
             		  	"</td>"+
             		  	"</tr>"
             		$("#tbody_active").append(_row);
@@ -242,6 +242,16 @@ function loadSecondAddress(){
             	});
         }
     });
+}
+
+function exportPeoples(index){
+	if(_list){
+		$.ajax({
+	         url:"active/peopleController/exportPeoples.do",
+	         type:'get',
+	         data:{"activeId":_list[index].id},
+	     });
+	}
 }
 
 
