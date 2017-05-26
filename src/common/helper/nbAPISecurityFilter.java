@@ -47,7 +47,7 @@ public class nbAPISecurityFilter implements Filter{
 		System.out.println("nbAPISecurityFilter: "+servletPath+" isExcludedPath:"+isExcludedPath);
 		//需要拦截
 		if( !isExcludedPath ){
-			Object sessionUser=httpServletRequest.getSession().getAttribute("sessionUser");
+			Object sessionUser=httpServletRequest.getSession().getAttribute("sessionUserA");
 			if(null==sessionUser&&!"success".equals((String)sessionUser)){
 				httpServletResponse.sendRedirect("/active/login.html");
 				return;
