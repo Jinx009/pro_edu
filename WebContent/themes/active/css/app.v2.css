@@ -10163,3 +10163,6 @@ display:inherit !important;
 	min-width:1366px;
 	overflow: auto;
 }
+.hbox{
+	min-height: 720px;
+}

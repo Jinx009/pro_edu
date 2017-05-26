@@ -60,8 +60,16 @@ public class Active {
 	private String status;
 	@Column(name = "num")
 	private Integer num;
+	@Column(name = "show_status")
+	private Integer showStatus;
 	
 	
+	public Integer getShowStatus() {
+		return showStatus;
+	}
+	public void setShowStatus(Integer showStatus) {
+		this.showStatus = showStatus;
+	}
 	public Integer getId() {
 		return id;
 	}

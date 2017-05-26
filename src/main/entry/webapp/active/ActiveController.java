@@ -66,6 +66,14 @@ public class ActiveController {
 
 	public static Random random = new Random();
 
+	@RequestMapping(value = "/status")
+	public void status(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		Active active = activeService.find(Integer.valueOf(req.getParameter("id")));
+		active.setShowStatus(1);	
+		activeService.update(active);
+		HttpWebIOHelper._printWebJson(AjaxJson.successAjaxJson("修改成功!"), res);
+	}
+	
 	/**
 	 * 
 	 * @Description: 添加活动

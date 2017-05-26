@@ -49,6 +49,22 @@ public class ActiveAdminPageController {
 		return "active/updatePwd";
 	}
 	
+	@RequestMapping(value = "/active/updatePwdData")
+	public void updatePwdData(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		AdminUser adminUser =  (AdminUser)request.getSession().getAttribute("sessionUserA");
+		String old = request.getParameter("old");
+		String pwd = request.getParameter("pwd");
+		data = new HashMap<String,Object>();
+		if(!old.equals(adminUser.getPwd())){
+			data.put("status","fail");
+		}else{
+			adminUser.setPwd(pwd);
+			adminUserService.updateAdminUser(adminUser);
+			data.put("status","success");
+		}
+		HttpWebIOHelper._printWebJson(data, response);
+	}
+	
 	/*
 	 * 登录
 	 */
@@ -65,7 +81,7 @@ public class ActiveAdminPageController {
 		AdminUser adminUser = adminUserService.login(userName,password);
 		if(adminUser!=null){
 			data.put("status","success");
-			request.getSession().setAttribute("sessionUser",adminUser);
+			request.getSession().setAttribute("sessionUserA",adminUser);
 		}
 		HttpWebIOHelper._printWebJson(data, response);
 	}

@@ -81,6 +81,12 @@ public class FrontPageController {
 //		return "/active/front/detail";
 	}
 	
+	@RequestMapping(path = "/detailA")
+	public String detailA(HttpServletRequest request,HttpServletResponse response){
+		request.setAttribute("id",request.getParameter("id"));
+		return "/active/front/detailA";
+	}
+	
 	/**
 	 * 我参与的
 	 * @param request

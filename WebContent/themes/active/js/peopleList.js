@@ -29,7 +29,7 @@ function loadData(){
             	$.each(data.list,function(i,people){
             		var _row="<tr>"+
             		    "<td style=\"display:none;\">"+i+"</td>"+
-            		    "<td><input type=\"checkbox\" name=\"people_phone\" value=\""+people.mobiePhone+"\"></td>"+
+            		    "<td><input type=\"checkbox\" name=\"people_phone\" value=\""+people.mobiePhone+"\"></td>";
             		    if(people.mobiePhone!=null){
             				_row+= "<td>"+people.mobiePhone+"</td>";
             			}else{

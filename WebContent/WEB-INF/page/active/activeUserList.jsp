@@ -24,13 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
     </ul>
     <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
-      
-      <li class="dropdown"> <a  class="dropdown-toggle" ><!--  <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span>  -->管理员<b class="caret"></b> </a>
-        <ul class="dropdown-menu animated fadeInRight">
-          <span class="arrow top"></span>
-          <li> <a  data-toggle="ajaxModal" onclick="logout()">Logout</a> </li>
-        </ul>
-      </li>
+       <li class="dropdown"> <a  class="dropdown-toggle" href="/active/updatePwd.do" >修改密码<b class="caret"></b> </a> </li>
     </ul>
   </header>
   <section>

@@ -41,15 +41,15 @@ public class FrontActiveController {
 	public void getIndexActive(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String type = request.getParameter("type");
 		String address = request.getParameter("address");
-		String hql = " FROM Active WHERE addUser ='0' ORDER BY openTime DESC ";
+		String hql = " FROM Active WHERE addUser ='0' AND showStatus = 1 ORDER BY openTime DESC ";
 		if(type!=null&&!type.isEmpty()){
-			hql = " FROM Active WHERE addUser ='0' AND type= '"+type+"' ORDER BY openTime DESC ";
+			hql = " FROM Active WHERE addUser ='0' AND type= '"+type+"' AND showStatus = 1  ORDER BY openTime DESC ";
 		}
 		if(address!=null&&!address.isEmpty()){
-			hql = " FROM Active WHERE addUser ='0' AND address= '"+address+"' ORDER BY openTime DESC ";
+			hql = " FROM Active WHERE addUser ='0' AND address= '"+address+"' AND showStatus = 1  ORDER BY openTime DESC ";
 		}
 		if(address!=null&&!address.isEmpty()&&type!=null&&!type.isEmpty()){
-			hql = " FROM Active WHERE addUser ='0' AND type= '"+address+"'  AND address= '"+address+"' ORDER BY openTime DESC ";
+			hql = " FROM Active WHERE addUser ='0' AND type= '"+address+"'  AND address= '"+address+"' AND showStatus = 1  ORDER BY openTime DESC ";
 		}
 		List<Active> list = activeService.findByHql(hql);
 		if(list!=null){
@@ -96,6 +96,10 @@ public class FrontActiveController {
 		Active active = activeService.find(id);
 		HttpSession session = request.getSession();
 		ActiveUser activeUser = (ActiveUser) session.getAttribute("sessionUser");
+		if(activeUser==null){
+			activeUser = new ActiveUser();
+			activeUser.setId(0);
+		}
 		String hql = " FROM People WHERE activeId = "+id+" AND userId = "+activeUser.getId()+" ";
 		List<People> list = peopleService.findByHql(hql);
 		active.setDetailImg("3");//可收藏
