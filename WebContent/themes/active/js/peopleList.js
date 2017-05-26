@@ -45,7 +45,7 @@ function loadData(){
 	        			}else{
 	        				_row+= "<td></td>";
 	        			}
-            		  	"<td>"+people.addTime+"</td>"+
+	            		_row+="<td>"+people.addTime+"</td>"+
             		  	"</tr>"
             		$("tbody").append(_row);
             	})
