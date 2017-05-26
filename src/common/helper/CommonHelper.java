@@ -12,10 +12,8 @@ import java.util.Calendar;
 
 
 import com.alibaba.fastjson.serializer.JSONSerializer;
-import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializeWriter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.fasterxml.jackson.databind.JsonSerializable;
 
 public class CommonHelper {
 

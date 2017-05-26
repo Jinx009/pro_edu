@@ -7,10 +7,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import common.helper.HttpWebIOHelper;
+import database.models.active.AdminUser;
+import service.basicFunctions.active.AdminUserService;
 
 /**
  * 
@@ -24,6 +27,9 @@ public class ActiveAdminPageController {
 
 	private Map<String,Object> data;
 	
+	@Autowired
+	private AdminUserService adminUserService;
+	
 	@RequestMapping(value = "/active/login")
 	public String login(){
 		return "active/login";
@@ -34,6 +40,14 @@ public class ActiveAdminPageController {
 		return "active/index";
 	}
 	
+	/**
+	 * 修改密码
+	 * @return
+	 */
+	@RequestMapping(value = "/active/updatePwd")
+	public String updatePwd(){
+		return "active/updatePwd";
+	}
 	
 	/*
 	 * 登录
@@ -42,15 +56,17 @@ public class ActiveAdminPageController {
 	public void doLogin(HttpServletResponse response,HttpServletRequest request) throws IOException{
 		data = new HashMap<String,Object>();
 		data.put("status","fail");
-		
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		
-		if("admin".equals(userName)&&"admin".equals(password)){
-				data.put("status","success");
-				request.getSession().setAttribute("sessionUser","success");
+//		if("admin".equals(userName)&&"admin".equals(password)){
+//				data.put("status","success");
+//				request.getSession().setAttribute("sessionUser","success");
+//		}
+		AdminUser adminUser = adminUserService.login(userName,password);
+		if(adminUser!=null){
+			data.put("status","success");
+			request.getSession().setAttribute("sessionUser",adminUser);
 		}
-		
 		HttpWebIOHelper._printWebJson(data, response);
 	}
 	
