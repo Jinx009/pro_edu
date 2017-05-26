@@ -107,7 +107,7 @@ public class FrontPeopleController {
 					people.setActiveName(active.getName());
 					people.setAddTime(new Date());
 					people.setMobiePhone(activeUser.getMobilePhone());
-					people.setNickName(activeUser.getEmail());
+					people.setNickName(activeUser.getName());
 					people.setType(Integer.valueOf(type));
 					people.setUserId(activeUser.getId());
 					people.setDanwei(activeUser.getDanwei());
@@ -123,7 +123,7 @@ public class FrontPeopleController {
 				people.setActiveName(active.getName());
 				people.setAddTime(new Date());
 				people.setMobiePhone(activeUser.getMobilePhone());
-				people.setNickName(activeUser.getEmail());
+				people.setNickName(activeUser.getName());
 				people.setDanwei(activeUser.getDanwei());
 				people.setType(Integer.valueOf(type));
 				people.setUserId(activeUser.getId());

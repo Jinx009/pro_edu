@@ -35,8 +35,8 @@ function loadData(){
             			}else{
             				_row+= "<td></td>";
             			}
-	            		if(people.name!=null){
-	        				_row+= "<td>"+people.name+"</td>";
+	            		if(people.nickName!=null){
+	        				_row+= "<td>"+people.nickName+"</td>";
 	        			}else{
 	        				_row+= "<td></td>";
 	        			}
