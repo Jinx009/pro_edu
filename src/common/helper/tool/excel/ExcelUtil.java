@@ -11,6 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import database.models.User;
+import database.models.active.People;
 
 public class ExcelUtil {
 	/**
@@ -28,7 +29,7 @@ public class ExcelUtil {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
-		
+
 		HSSFWorkbook wb = new HSSFWorkbook();
 		HSSFSheet sheet = wb.createSheet("导师表一");
 		HSSFRow row = sheet.createRow((int) 0);
@@ -60,4 +61,5 @@ public class ExcelUtil {
 			e.printStackTrace();
 		}
 	}
+
 }
