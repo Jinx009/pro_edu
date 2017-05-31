@@ -1,6 +1,5 @@
 package main.entry.webapp.active;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -157,6 +156,7 @@ public class PeopleController {
 	 * @param res
 	 * @throws IOException
 	 */
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/exportPeoples")
 	public void addOrUpdate(HttpServletRequest req, HttpServletResponse res, String activeId) throws IOException {
 		List<People> peoples = peopleService.findByHql("from People where type=0 and activeId = '" + activeId + "'");
@@ -185,7 +185,7 @@ public class PeopleController {
 		dateFormatCellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 
 		HSSFCell cell = row.createCell((short) 0);
-		cell.setCellValue("昵称");
+		cell.setCellValue("姓名");
 		cell.setCellStyle(style);
 		cell = row.createCell((short) 1);
 		cell.setCellValue("手机号");
@@ -195,6 +195,9 @@ public class PeopleController {
 		cell.setCellStyle(style);
 		cell = row.createCell((short) 3);
 		cell.setCellValue("活动名称");
+		cell.setCellStyle(style);
+		cell = row.createCell((short) 4);
+		cell.setCellValue("单位");
 		cell.setCellStyle(style);
 
 		for (int i = 0; i < peoples.size(); i++) {
@@ -212,6 +215,9 @@ public class PeopleController {
 			cell.setCellStyle(dateFormatCellStyle);
 			cell=row.createCell((short) 3);
 			cell.setCellValue(people.getActiveName());
+			cell.setCellStyle(style);
+			cell=row.createCell((short) 4);
+			cell.setCellValue(people.getDanwei());
 			cell.setCellStyle(style);
 		}
 		// 输出数据流
