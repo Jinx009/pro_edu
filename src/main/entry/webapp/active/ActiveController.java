@@ -91,11 +91,13 @@ public class ActiveController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			active.setShowStatus(activeOld.getShowStatus());
 			active.setNum(activeOld.getNum());
 			active.setAddUser("0");
 			activeService.update(active);
 		} else {
 			active.setAddTime(new Date());
+			active.setShowStatus(0);
 			active.setAddUser("0");
 			active.setNum(0);
 			activeService.save(active);
